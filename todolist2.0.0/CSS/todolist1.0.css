@@ -1,0 +1,390 @@
+
+body{
+    background: url("../image/background.jpg") fixed;
+    background-size: cover;
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.container{
+    position: relative;
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*top:20px;*/
+}
+
+.header{
+    width:100%;
+    /*height:300px;*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header > h1{
+    height:50px;
+    font-size: 60px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.manage{
+    height:60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag{
+    width:60px;
+    height:50px;
+    cursor: pointer;
+    /*border:1px solid black;*/
+    position: relative;
+    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.isvg{
+    width:20px;
+    height: 20px;
+}
+
+.info_tag{
+    font-size: 12px;
+}
+
+.tag:hover{
+    color:#35525a;
+    text-decoration: underline;
+}
+
+.tag:active{
+    color: blue;
+}
+
+
+.todo_list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.todo_list li {
+    width: 600px;
+    height: 55px;
+    position: relative;
+    border-bottom: 1px solid #ededed;
+    font-size: 24px;
+    background-color: white;
+
+}
+
+.todo_list li:last-child {
+    border-bottom: none;
+}
+
+.todo_list li.editing {
+    border-bottom: none;
+    padding: 0;
+}
+
+.todo_list li.editing .edit {
+    display: block;
+    width: 506px;
+    padding: 12px 16px;
+    margin: 0 0 0 43px;
+}
+
+.todo_list li.editing .view {
+    display: none;
+}
+
+.todo_list li .toggle {
+    text-align: center;
+    width: 40px;
+    /* auto, since non-WebKit browsers doesn't support input styling */
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    border: none; /* Mobile Safari */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.todo_list li .toggle {
+    opacity: 0;
+}
+
+.todo_list li .toggle + label {
+    /*
+        Firefox requires `#` to be escaped - https://bugzilla.mozilla.org/show_bug.cgi?id=922433
+        IE and Edge requires *everything* to be escaped to render, so we do that instead of just the `#` - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7157459/
+    */
+    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+
+.todo_list li .toggle:checked + label {
+    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+    /*background-image: url("../image/gou.svg");*/
+}
+
+.todo_list li label {
+    word-break: break-all;
+    padding: 15px 15px 15px 60px;
+    display: block;
+    line-height: 1.2;
+    transition: color 0.4s;
+}
+
+.todo_list li.completed label {
+    color: #d9d9d9;
+    text-decoration: line-through;
+}
+
+.todo_list li .delete1 {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    font-size: 30px;
+    color: #cc9a9a;
+    margin-bottom: 11px;
+    transition: color 0.2s ease-out;
+}
+
+.todo_list li .delete1:hover {
+    color: #af5b5e;
+}
+
+.todo_list li .delete1:after {
+    content: '×';
+}
+
+.todo_list li:hover .delete1 {
+    display: block;
+}
+
+.todo_list li .edit {
+    display: none;
+}
+
+.todo_list li.editing:last-child {
+    margin-bottom: -1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#title {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 50px;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.7);
+    /* font-style: initial; */
+    width: 300px;
+}
+
+.input {
+    font-size: 0;
+    width: 550px;
+    height: 60px;
+    /*box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1), inset 0 -3px 5px rgba(0, 0, 0, 0.03);*/
+    border:#e6e6e6 solid 1px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*margin-bottom: 100px;*/
+}
+
+.input input {
+    outline: none;
+    height: 80%;
+    width: 100%;
+    margin-left: 15px;
+    border: none;
+    font-size: 25px;
+    width: calc(100% - 66px);
+    background-color: transparent;
+}
+
+.text {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.clone {
+    position: relative;
+    width: 600px;
+    font-size: 24px;
+    line-height: 35px;
+    display: flex;
+    display: none;
+    border-bottom: 1px solid #ededed;
+    align-items: center;
+    word-break: break-all;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.clone div.cha {
+    cursor: pointer;
+    display: none;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 15px;
+    background-image: url(../image/cha.svg);
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    background-position: center;
+}
+
+.clone:hover div.cha {
+    display: block;
+}
+
+.clone .reinput {
+    border: 1px solid rgba(78, 78, 78, 0.288);
+    border-radius: 20px;
+    outline: none;
+    height: 60px;
+    margin-left: 66px;
+    font-size: 25px;
+    width: calc(100% - 66px);
+    background-color: transparent;
+}
+
+.clone>span:nth-of-type(1) {
+    line-height: 66px;
+    width: 66px;
+    height: 66px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.clone .text {
+    display: block;
+    padding-right: 32px;
+    flex-grow: 1;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.clone span:nth-of-type(1) span {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    width: 33px;
+    height: 33px;
+    border: 1px solid rgba(0, 0, 0, 0.377);
+    border-radius: 50%;
+}
+
+
+/* 打勾的状态 */
+
+.gou {
+    cursor: pointer;
+    background-image: url(../image/gou.svg);
+    background-position: center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+
+/* 已完成项目显示 */
+
+.totle .clone .line_through {
+    text-decoration: line-through;
+    color: rgba(6, 61, 13, 0.322);
+    transition: .3s;
+}
+
+
+/* .saying div.input_s {
+    width: 100%;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.input_s textarea {
+    width: 80%;
+    height: 80%;
+    background-color: transparent;
+} */
+
+
+
+
+/*.clone11{*/
+/*    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),*/
+/*    0 8px 0 -3px #f6f6f6,*/
+/*    0 9px 1px -3px rgba(0, 0, 0, 0.2),*/
+/*    0 16px 0 -6px #f6f6f6,*/
+/*    0 17px 2px -6px rgba(0, 0, 0, 0.2);*/
+/*}*/
+
+
+
+

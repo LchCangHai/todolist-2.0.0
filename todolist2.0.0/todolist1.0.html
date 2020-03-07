@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+    <title>todolist_lch</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="image/gou.png" sizes="32x32">
+    <link rel="stylesheet" href="CSS/todolist1.0.css">
+
+
+
+</head>
+
+<body>
+<!--<canvas id="canvas"></canvas>-->
+<div class="container">
+    <div class="header">
+        <h1>To Do List</h1>
+        <div class="input">
+            <input type="text" autofocus="" autocomplete="off" placeholder="添加一个计划！"
+                   v-model="newTodo"
+                   @keyup.enter="addTodo"
+            >
+        </div>
+    </div>
+    <div class="manage">
+        <div class="tag"
+            :class = "{selected:visibility == 'all'}"
+             @click = "visibility = 'all'"
+        >
+            <img src="image/all.svg" class="isvg">
+            <span class="info_tag">全 部</span>
+        </div>
+        <div class="tag"
+             :class = "{selected:visibility == 'active'}"
+             @click = "visibility = 'active'"
+        >
+            <img src="image/active.svg" class="isvg">
+            <span class="info_tag">未完成</span>
+        </div>
+        <div class="tag"
+             :class = "{selected:visibility == 'completed'}"
+             @click = "visibility = 'completed'"
+        >
+            <img src="image/completed.svg" class="isvg">
+            <span class="info_tag">已完成</span>
+        </div>
+        <div class="tag"
+             @click = "visibility = 'delete_completed'"
+             v-show = "cnt_completed"
+        >
+            <img src="image/delete_completed.svg" class="isvg">
+            <span class="info_tag">清空已完成</span>
+        </div>
+    </div>
+
+    <div class="body1"
+        v-show = "cnt_all"
+    >
+        <ul class="todo_list">
+            <li
+                v-for = "(item , index) in showLists"
+                :key = "'item-' + index"
+                :class = "{ completed : item.status ,  editing : item == editTodo}"
+            >
+                <div class="view">
+                    <input class="toggle" type="checkbox"
+                            v-model = "item.status"
+                    >
+                    <label
+                        @dblclick = "edit_todo(item)"
+                        v-cloak>
+                        {{item.content}}
+                    </label>
+                    <button class="delete1"
+                            @click = "delete1(item)">
+                    </button>
+                </div>
+                <input class="edit"
+                       v-model = "item.content"
+                       v-focus = "item == editTodo"
+                       @heyup.enter = ""
+                       @heyup.esc = ""
+                       @blur = ""
+                >
+            </li>
+        </ul>
+
+
+        <div class="view">
+
+
+        </div>
+        <div class="edit"></div>
+
+        <div class="totle1">
+            <div class="clone">
+                <div class="cha"></div>
+                <span><span class="tick"></span></span>
+                <span class="text"></span></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script charset="utf-8" src="vue/vue.min.js"></script>
+<script src="JS/vue01.js"></script>
+<!--    <script src="JS/todolist1.0.js"></script>-->
+</body>
+
+</html>
