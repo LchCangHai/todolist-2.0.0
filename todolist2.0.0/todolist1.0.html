@@ -15,13 +15,15 @@
     <div class="header">
         <h1>To Do List</h1>
         <div class="input">
-            <input type="text" autofocus="" autocomplete="off" placeholder="添加一个计划！"
+            <input type="text" autofocus="autofocus" autocomplete="off" placeholder="添加一个计划！"
                    v-model="newTodo"
                    @keyup.enter="addTodo"
             >
         </div>
     </div>
-    <div class="manage">
+    <div class="manage"
+        v-show = "cnt_all"
+    >
         <div class="tag"
             :class = "{selected:visibility == 'all'}"
              @click = "visibility = 'all'"
@@ -43,8 +45,8 @@
             <img src="image/completed.svg" class="isvg">
             <span class="info_tag">已完成</span>
         </div>
-        <div class="tag"
-             @click = "visibility = 'delete_completed'"
+        <div class="tag delete_completed"
+             @click = "delete_completed"
              v-show = "cnt_completed"
         >
             <img src="image/delete_completed.svg" class="isvg">
@@ -76,10 +78,9 @@
                 </div>
                 <input class="edit"
                        v-model = "item.content"
-                       v-focus = "item == editTodo"
-                       @heyup.enter = ""
-                       @heyup.esc = ""
-                       @blur = ""
+                       v-focus = "item === editTodo"
+                       @keyup.enter = "confirmEdit(item)"
+                       @blur = "cancelEdit(item)"
                 >
             </li>
         </ul>
@@ -89,14 +90,7 @@
 
 
         </div>
-        <div class="edit"></div>
 
-        <div class="totle1">
-            <div class="clone">
-                <div class="cha"></div>
-                <span><span class="tick"></span></span>
-                <span class="text"></span></div>
-        </div>
 
     </div>
 </div>
